@@ -1,0 +1,25 @@
+EVIDENCE EXTRACT: EVD-001 (FICTIONAL SAMPLE)
+============================================
+Type: Reconstructed Plain-Text Procurement Summary
+Jurisdiction: Klong-Sai Municipality (Fictional)
+Reference Period: 2025-01-01 to 2025-09-30 UTC
+
+Tranche A (Contract KS-2025-014)
+- Procurement Method: Emergency Direct Award
+- Posting Window: 72 hours
+- Contract Value: 46,800,000 THB
+- Regional Reference Estimate: 19,500,000 THB
+
+Tranche B (Contract KS-2025-021)
+- Procurement Method: Emergency Direct Award
+- Posting Window: 72 hours
+- Contract Value: 47,900,000 THB
+- Regional Reference Estimate: 20,100,000 THB
+
+Tranche C (Contract KS-2025-029)
+- Procurement Method: Emergency Direct Award
+- Posting Window: 72 hours
+- Contract Value: 47,800,000 THB
+- Regional Reference Estimate: 19,800,000 THB
+
+Sanitization Note: Re-typed from verified public filings; zero original binary metadata retained.

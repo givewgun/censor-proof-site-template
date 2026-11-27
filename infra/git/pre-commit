@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# OPSEC Pre-Commit Hook (ADR-009)
+# Install in an operational archive repo:
+#   cp infra/git/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+# Note: Client hooks can be bypassed with --no-verify; ALWAYS run `npm run audit:opsec`
+# before publishing any release.
+
+set -euo pipefail
+
+# 1. Inspect effective git author AND committer identities (catches env overrides like GIT_AUTHOR_EMAIL/DATE)
+AUTHOR_IDENT="$(git var GIT_AUTHOR_IDENT)"
+COMMITTER_IDENT="$(git var GIT_COMMITTER_IDENT)"
+
+for IDENT in "$AUTHOR_IDENT" "$COMMITTER_IDENT"; do
+  if ! echo "$IDENT" | grep -qE ' \+0000$'; then
+    echo "[OPSEC BLOCK] Non-UTC timezone detected in git identity: $IDENT" >&2
+    echo "Commit using: TZ=UTC git commit ..." >&2
+    exit 1
+  fi
+  if echo "$IDENT" | grep -qiE '@(gmail|googlemail|hotmail|outlook|live|yahoo|icloud|me)\.'; then
+    echo "[OPSEC BLOCK] Personal email domain detected in git identity: $IDENT" >&2
+    echo "Set a pseudonymous identity: git config user.email 'release@archive.invalid'" >&2
+    exit 1
+  fi
+done
+
+# 2. Block staged private keys, env/wallet/VPN files, or raw unsanitized Office documents
+STAGED="$(git diff --cached --name-only)"
+if echo "$STAGED" | grep -qiE '(^|/)(id_rsa|id_ed25519|id_ecdsa|\.env(\..*)?)$|\.(key|pem|sec|gpg|p12|kdbx|ovpn|docx|xlsx|pptx|doc|xls|ppt)$'; then
+  echo "[OPSEC BLOCK] Refusing to commit private keys, secrets, or raw Office binaries:" >&2
+  echo "$STAGED" >&2
+  exit 1
+fi
+
+# 3. Scan staged ASCII-armored files (.asc/.txt) for accidental PGP/SSH private keys
+while IFS= read -r FILE; do
+  [[ -z "$FILE" ]] && continue
+  if git show ":$FILE" 2>/dev/null | grep -qE 'BEGIN (PGP PRIVATE KEY BLOCK|OPENSSH PRIVATE KEY|RSA PRIVATE KEY|EC PRIVATE KEY)'; then
+    echo "[OPSEC BLOCK] Private key material detected inside staged file: $FILE" >&2
+    exit 1
+  fi
+done <<< "$STAGED"
+
+exit 0

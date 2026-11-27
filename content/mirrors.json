@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "1.0",
+  "releaseVersion": "1.0.0",
+  "updatedUtc": "2026-11-27T00:00:00Z",
+  "canonical": {
+    "torOnion": "http://replace-with-56-char-v3-onion-address-examplexxxxxxxxxxxxxx.onion/",
+    "ipfsCid": "bafybeireplacewithrealcidfromoffshoreipfspinner00000000000000",
+    "bittorrentMagnet": "magnet:?xt=urn:btih:0000000000000000000000000000000000000000&dn=archive-portable-v1.0.0.zip"
+  },
+  "ipfsGateways": [
+    {
+      "name": "dweb.link (Subdomain Gateway)",
+      "urlTemplate": "https://{CID}.ipfs.dweb.link/",
+      "notes": "Isolated origin per CID; widely accessible."
+    },
+    {
+      "name": "w3s.link (Storacha / Web3.Storage Gateway)",
+      "urlTemplate": "https://{CID}.ipfs.w3s.link/",
+      "notes": "Fast global edge cache; fallback if dweb.link is blocked."
+    },
+    {
+      "name": "ipfs.io (Path Gateway)",
+      "urlTemplate": "https://ipfs.io/ipfs/{CID}/",
+      "notes": "Works seamlessly because this site uses strictly relative paths."
+    }
+  ],
+  "clearnetMirrors": [
+    {
+      "id": "mirror-cf-01",
+      "label": "Diaspora Mirror A (Cloudflare Pages — ECH enabled)",
+      "url": "https://example-mirror-a.pages.dev/",
+      "operatorRegion": "Outside Thailand (Independent Volunteer)",
+      "supportsEch": true,
+      "onionLocationHeader": true,
+      "status": "active"
+    },
+    {
+      "id": "mirror-nl-02",
+      "label": "Diaspora Mirror B (Netlify — Burnable Front Door)",
+      "url": "https://example-mirror-b.netlify.app/",
+      "operatorRegion": "Outside Thailand (Independent Volunteer)",
+      "supportsEch": false,
+      "onionLocationHeader": true,
+      "status": "active"
+    }
+  ],
+  "outOfBandChannels": [
+    {
+      "name": "Signal / Telegram Mirror Broadcast",
+      "handle": "Replace with verified broadcast channel link",
+      "purpose": "Publishes fresh burnable mirror URLs and Visual Archive Fingerprints when ISP blocks occur."
+    },
+    {
+      "name": "Ceno Browser (Android P2P)",
+      "handle": "https://censorship.no/",
+      "purpose": "Allows mobile readers in censored networks to fetch and P2P-share cached clearnet pages."
+    }
+  ],
+  "compromisedOrRevoked": [
+    {
+      "address": "http://example-revoked-mirror-do-not-trust.invalid/",
+      "revokedUtc": "2026-11-27T00:00:00Z",
+      "reason": "Sample entry demonstrating how a seized .onion or hijacked mirror is publicly repudiated via PGP-signed mirrors.json.asc."
+    }
+  ]
+}

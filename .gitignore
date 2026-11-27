@@ -1,0 +1,19 @@
+# Build artifacts (regenerated deterministically)
+dist/
+
+# Secrets, private keys, and raw unsanitized materials MUST NEVER enter git
+*.key
+*.pem
+*.sec
+*.gpg
+*.p12
+*.env
+.env*
+raw-evidence/
+private/
+tmp/
+
+# OS & editor noise
+.DS_Store
+Thumbs.db
+*.swp

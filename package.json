@@ -1,0 +1,25 @@
+{
+  "name": "censor-proof-site-template",
+  "version": "1.0.0",
+  "description": "Zero-dependency, deterministic, censorship-resistant public-interest archive template (Tor v3, IPFS, BitTorrent, Collateral Freedom mirrors, offline bundles).",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "audit": "node scripts/audit.mjs",
+    "audit:opsec": "node scripts/audit.mjs --strict-opsec",
+    "verify": "node scripts/verify.mjs",
+    "preview": "node scripts/preview.mjs",
+    "lab:up": "docker compose -f infra/lab/docker-compose.yml up -d --build",
+    "lab:test": "node scripts/lab-e2e.mjs",
+    "lab:down": "docker compose -f infra/lab/docker-compose.yml down -v",
+    "vbox:up": "node infra/virtualbox/provision-vm.mjs",
+    "vbox:test": "node infra/virtualbox/verify-vm-e2e.mjs",
+    "vbox:down": "node infra/virtualbox/destroy-vm.mjs",
+    "test": "node --test test/*.test.mjs && node scripts/audit.mjs"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,31 @@
+name: Build, OPSEC Audit & Reproducibility CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout template repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build deterministic static archive & offline bundles
+        run: npm run build
+
+      - name: Run unit tests, metadata gates & double-build reproducibility audit
+        run: npm test
+
+      - name: Verify SHA256SUMS integrity (including unlisted file check)
+        run: npm run verify

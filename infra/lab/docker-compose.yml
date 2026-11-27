@@ -1,0 +1,41 @@
+services:
+  tor-origin:
+    build:
+      context: ../..
+      dockerfile: infra/lab/Dockerfile.tor-origin
+    container_name: censor-lab-tor-origin
+    restart: unless-stopped
+    volumes:
+      - ../../dist/site:/var/www/archive/site:ro
+      - lab-shared:/shared
+    # Zero host ports published: Nginx is strictly 127.0.0.1 inside this container,
+    # reachable ONLY via Tor v3 .onion!
+
+  ipfs-lab:
+    image: ipfs/kubo:v0.30.0
+    container_name: censor-lab-ipfs-offline
+    restart: unless-stopped
+    entrypoint: ["/bin/sh", "/usr/local/bin/start-ipfs-offline.sh"]
+    volumes:
+      - ../../dist/site:/site:ro
+      - ./start-ipfs-offline.sh:/usr/local/bin/start-ipfs-offline.sh:ro
+      - lab-shared:/shared
+    ports:
+      - "127.0.0.1:8088:8080"
+
+  clearnet-mirror:
+    image: caddy:2.8-alpine
+    container_name: censor-lab-caddy-mirror
+    restart: unless-stopped
+    depends_on:
+      - tor-origin
+    entrypoint: ["/bin/sh", "/usr/local/bin/start-caddy-mirror.sh"]
+    volumes:
+      - ../../dist/site:/srv/site:ro
+      - ./start-caddy-mirror.sh:/usr/local/bin/start-caddy-mirror.sh:ro
+      - lab-shared:/shared
+    ports:
+      - "127.0.0.1:8089:8089"
+
+volumes:
+  lab-shared:

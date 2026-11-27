@@ -1,0 +1,22 @@
+FROM debian:bookworm-slim
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    tor \
+    nginx \
+    curl \
+    ca-certificates \
+  && rm -rf /var/lib/apt/lists/* \
+  && rm -f /etc/nginx/sites-enabled/default \
+  && mkdir -p /var/lib/tor/archive_site /var/www/archive/site /run/nginx \
+  && chown -R debian-tor:debian-tor /var/lib/tor \
+  && chmod 700 /var/lib/tor/archive_site
+
+COPY infra/tor/nginx-onion.conf /etc/nginx/sites-enabled/archive-onion.conf
+COPY infra/lab/torrc.lab /etc/tor/torrc
+COPY infra/lab/start-tor-origin.sh /usr/local/bin/start-tor-origin.sh
+RUN sed -i 's/\r$//' /usr/local/bin/start-tor-origin.sh /etc/tor/torrc /etc/nginx/sites-enabled/archive-onion.conf \
+  && chmod +x /usr/local/bin/start-tor-origin.sh
+
+# Notice: NO EXPOSE of public web ports — Nginx binds strictly to 127.0.0.1:8080
+# and is served solely through Tor v3 Onion Service!
+CMD ["/usr/local/bin/start-tor-origin.sh"]

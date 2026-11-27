@@ -1,0 +1,12 @@
+{
+  "evidenceId": "EVD-003",
+  "sample": true,
+  "unit": "metric_tons",
+  "period": "2025-Q2",
+  "stations": [
+    { "stationId": "ST-01", "billedTons": 14200, "maxFleetCapacityTons": 10800, "variancePct": 31.48 },
+    { "stationId": "ST-02", "billedTons": 11900, "maxFleetCapacityTons": 9100, "variancePct": 30.77 },
+    { "stationId": "ST-03", "billedTons": 9800, "maxFleetCapacityTons": 7500, "variancePct": 30.67 },
+    { "stationId": "ST-04", "billedTons": 13100, "maxFleetCapacityTons": 9950, "variancePct": 31.66 }
+  ]
+}

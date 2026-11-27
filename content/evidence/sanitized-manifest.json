@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "1.0",
+  "note": "Every artifact in content/evidence/ MUST be reconstructed (Dangerzone/re-encode/plain text), scrubbed (MAT2), legally reviewed, and recorded here with its exact SHA-256 hash. Unlisted or modified files fail the build closed (ADR-007).",
+  "artifacts": [
+    {
+      "id": "EVD-001",
+      "filename": "EVD-001.txt",
+      "sha256": "aff2f6954490af874bba19a2fc34295f9e9c3db8f8357ce96e55773285632d0a",
+      "sanitizationMethod": "plain-text-reconstruction (re-typed from fictional sample; zero binary metadata)",
+      "redactionsFlattened": true,
+      "legalReviewApproved": true,
+      "reviewedUtc": "2026-11-27T00:00:00Z"
+    },
+    {
+      "id": "EVD-002",
+      "filename": "EVD-002.csv",
+      "sha256": "047100c983288fee5e70e9a31426852169497551b8afb5155bb0a89300a601cf",
+      "sanitizationMethod": "plain-csv-reconstruction (normalized UTF-8 LF; zero spreadsheet formulas or author props)",
+      "redactionsFlattened": true,
+      "legalReviewApproved": true,
+      "reviewedUtc": "2026-11-27T00:00:00Z"
+    },
+    {
+      "id": "EVD-003",
+      "filename": "EVD-003.json",
+      "sha256": "a79ed75a402041abc045853731235fe246e6da7d9032a4fb259834b6454393d7",
+      "sanitizationMethod": "plain-json-reconstruction (structured extract; zero source file artifacts)",
+      "redactionsFlattened": true,
+      "legalReviewApproved": true,
+      "reviewedUtc": "2026-11-27T00:00:00Z"
+    }
+  ]
+}

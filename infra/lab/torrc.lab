@@ -1,0 +1,14 @@
+# Lab Tor v3 Onion Service configuration (100% fictional sample testing)
+# In production, disable SocksPort (SocksPort 0); in this local lab we bind
+# SocksPort strictly to 127.0.0.1:9050 so the in-container E2E test can fetch
+# our own live .onion circuit end-to-end over Tor!
+
+DataDirectory /var/lib/tor
+Log notice stdout
+SafeLogging 1
+SocksPort 127.0.0.1:9050
+
+HiddenServiceDir /var/lib/tor/archive_site/
+HiddenServiceVersion 3
+HiddenServicePort 80 127.0.0.1:8080
+HiddenServicePoWDefensesEnabled 1

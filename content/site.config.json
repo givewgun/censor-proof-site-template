@@ -1,0 +1,48 @@
+{
+  "archiveId": "sample-public-interest-archive",
+  "releaseVersion": "1.0.0",
+  "releaseDateUtc": "2026-11-27T00:00:00Z",
+  "isSampleTemplate": true,
+  "supersedes": null,
+  "title": {
+    "en": "Public Integrity Archive (Sample Template)",
+    "th": "คลังเอกสารตรวจสอบเพื่อสาธารณประโยชน์ (เทมเพลตตัวอย่าง)"
+  },
+  "tagline": {
+    "en": "Censorship-resistant, cryptographically verifiable public-interest records — zero trackers, zero JavaScript, offline-ready.",
+    "th": "คลังข้อมูลสาธารณประโยชน์ที่ต้านทานการเซ็นเซอร์และตรวจสอบความถูกต้องได้ด้วยรหัสแฮช — ไม่มีตัวติดตาม ไม่ใช้ JavaScript และเปิดอ่านแบบออฟไลน์ได้"
+  },
+  "readerSafetyBanner": {
+    "en": "READER SAFETY: If you are viewing this over regular HTTPS from a monitored network or inside Thailand, your ISP can see the mirror domain via DNS/SNI. Use Tor Browser, a trusted VPN, or Ceno Browser (Android), or save the offline bundle.",
+    "th": "คำเตือนด้านความปลอดภัยผู้อ่าน: หากคุณเปิดหน้านี้ผ่าน HTTPS ปกติจากเครือข่ายที่ถูกตรวจสอบหรือภายในประเทศไทย ผู้ให้บริการอินเทอร์เน็ตอาจเห็นชื่อโดเมนของมิเรอร์ผ่าน DNS/SNI แนะนำให้ใช้ Tor Browser, VPN ที่เชื่อถือได้, Ceno Browser (Android) หรือดาวน์โหลดชุดไฟล์ออฟไลน์"
+  },
+  "sampleNotice": {
+    "en": "DEMONSTRATION TEMPLATE ONLY: All cases, figures, and entities below are 100% fictional examples created to illustrate the architecture.",
+    "th": "เทมเพลตตัวอย่างเท่านั้น: กรณีศึกษา ตัวเลข และหน่วยงานทั้งหมดในหน้านี้เป็นข้อมูลสมมติ 100% เพื่อแสดงโครงสร้างระบบ"
+  },
+  "pgp": {
+    "keyId": "REPLACE-WITH-OFFLINE-ED25519-KEY-ID",
+    "fingerprint": "0000 0000 0000 0000 0000  0000 0000 0000 0000 0000",
+    "uid": "Archive Release Key <release@archive.invalid>",
+    "keyFile": "assets/archive-release-key.asc"
+  },
+  "warrantCanary": {
+    "asOfUtc": "2026-11-27T00:00:00Z",
+    "statementEn": "As of 2026-11-27 UTC, the archive maintainers have NOT received any secret court order, gag order, hosting seizure notice, or coercion to alter, remove, or backdoor any content or signing key.",
+    "statementTh": "ณ วันที่ 2026-11-27 UTC ผู้ดูแลคลังเอกสารยังไม่ได้รับคำสั่งศาลลับ คำสั่งห้ามเปิดเผยข้อมูล การยึดเซิร์ฟเวอร์ หรือการบังคับให้แก้ไข ลบ หรือแทรกโค้ดในเนื้อหาและกุญแจลงนามใดๆ"
+  },
+  "intakeGuidance": {
+    "en": "This publication archive has NO upload form by design (see ADR-006). To submit sensitive evidence safely, use Tails OS + Tor Browser to contact an established investigative newsroom via SecureDrop or GlobaLeaks.",
+    "th": "คลังเผยแพร่นี้ไม่มีฟอร์มอัปโหลดไฟล์โดยเจตนา (ดู ADR-006) หากต้องการส่งข้อมูลเบาะแสอย่างปลอดภัย ให้ใช้ Tails OS ร่วมกับ Tor Browser เพื่อส่งผ่านระบบ SecureDrop หรือ GlobaLeaks ของสำนักข่าวสืบสวนที่น่าเชื่อถือ"
+  },
+  "corrections": [
+    {
+      "id": "CORR-2026-001",
+      "dateUtc": "2026-11-27T00:00:00Z",
+      "caseId": "case-002",
+      "summaryEn": "Example Correction Entry: Clarified unit conversion in fictional Annex B (Table 2) from cubic meters to metric tons; original immutable CID remains archived and superseded by v1.0.0.",
+      "summaryTh": "ตัวอย่างประกาศแก้ไขข้อมูล: ชี้แจงหน่วยนับในภาคผนวก ข (ตารางที่ 2) ของกรณีสมมติจากลูกบาศก์เมตรเป็นเมตริกตัน โดยสำเนา IPFS เดิมถูกระบุว่าแทนที่ด้วยเวอร์ชัน 1.0.0 แล้ว"
+    }
+  ],
+  "offlineBudgetMb": 25
+}

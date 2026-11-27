@@ -1,0 +1,31 @@
+# Hardened Tor v3 Onion Service Configuration (ADR-004)
+# Place at /etc/tor/torrc on an offshore, non-KYC VPS (funded via XMR).
+# NEVER host clearnet HTTPS on this same VPS.
+
+# Disable local SOCKS proxy (this box is an onion origin, not a browsing client)
+SocksPort 0
+
+# Minimize logging on disk
+Log notice file /dev/null
+SafeLogging 1
+
+# -----------------------------------------------------------------------------
+# 1. Public Static Archive Onion Service (v3)
+# -----------------------------------------------------------------------------
+HiddenServiceDir /var/lib/tor/archive_site/
+HiddenServiceVersion 3
+HiddenServicePort 80 127.0.0.1:8080
+
+# Enable Tor v3 Proof-of-Work (PoW) defense against onion DDoS (Tor >= 0.4.8)
+HiddenServicePoWDefensesEnabled 1
+
+# -----------------------------------------------------------------------------
+# 2. Private Admin SSH Onion Service (v3 + Mandatory Client Authorization)
+# -----------------------------------------------------------------------------
+# Place your x25519 public key in:
+#   /var/lib/tor/admin_ssh/authorized_clients/operator.auth
+# Format: descriptor:x25519:<base32-public-key>
+# Anyone without the matching private key cannot even reach the SSH handshake.
+HiddenServiceDir /var/lib/tor/admin_ssh/
+HiddenServiceVersion 3
+HiddenServicePort 22 127.0.0.1:22
