@@ -14,6 +14,15 @@
 
 This repository is an **end-to-end AI SDLC reference architecture and working starter template** for publishing a **censorship-resistant, verifiable, offline-capable public-interest / anti-corruption archive** (bilingual **English + Thai** ready out of the box).
 
+### Live Demo Mirrors (100% Fictional Sample Archive)
+
+| Channel | Live Demo URL | Notes |
+| :--- | :--- | :--- |
+| **Cloudflare Pages** | https://censor-proof-site-template.pages.dev/ | Burnable Collateral Freedom mirror (`default-src 'none'` CSP, HSTS, `Referrer-Policy: no-referrer`, `Onion-Location`) |
+| **GitHub Pages** | https://givewgun.github.io/censor-proof-site-template/ | Auto-deployed via GitHub Actions on every push; proves subpath relative-path portability |
+| **Single-File Offline HTML** | https://censor-proof-site-template.pages.dev/offline/archive-offline | Self-contained EN + TH bundle (zero external requests, zero JS) |
+| **Pinned IPFS CAR (Filebase)** | https://shocked-bronze-puma.myfilebase.com/ipfs/QmRqLGFDynptBpVnsEsHXNGUhRshbe7wdxBGh2UmeV3QuE | Portable CAR bundle (`ipfs dag import` to unpack full site DAG locally) |
+
 It is designed both as:
 1. **A practical, zero-dependency working template** you can build, audit, package, sign, and deploy immediately (`npm run build && npm test`).
 2. **A deep architecture study guide** covering every censorship angle (DNS poisoning, TLS SNI/DPI blocks, court-ordered ISP blocks, SLAPP/defamation takedowns, DDoS, mirror tampering, reader surveillance, and publisher OPSEC).
